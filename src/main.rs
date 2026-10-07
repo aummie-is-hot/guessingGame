@@ -8,7 +8,7 @@ Program Details: Guessing game between 1-100
 fn main() {
       println!("This is a guessing game. The numbers are between 1 and 100. Type 'exit' to quit the game.");
       let mut rng = rand::rng();
-      let mut dice: i32 = rng.random_range(1..100);
+      let mut dice: i32 = rng.random_range(1..=100);
     loop{
      println!("Input your guess: ");  
     let mut input = String::new();
@@ -23,9 +23,10 @@ fn main() {
     let ansHot = "Hot";
     let ansBoiling = "BOILING HOT";
     let ansCorrect = "Correct!";
+    
     if parsed_value == dice as f64 {
         println!("{}", ansCorrect);
-        dice = rng.random_range(1..100);
+        dice = rng.random_range(1..=100);
         println!("Game has restarted. Guess the new number between 1 and 100.");
     } else if (parsed_value - dice as f64).abs() <= 5.0 {
         println!("{}", ansBoiling);
@@ -41,13 +42,16 @@ fn main() {
         println!("{}", ansFreeze);
     }
 }
-    else{
+   else if input.trim().to_lowercase() == "debug" {
+        println!("The correct number is: {}", dice);
+    } 
+    else if input.trim().to_lowercase() == "exit" {
+        break;
+    }else{
         println!("Invalid input. Please enter a number between 1 and 100 or type 'exit' to quit."); 
     }
     
-    if input.trim().to_lowercase() == "exit" {
-        break;
-    }
+    
    
     }
     
