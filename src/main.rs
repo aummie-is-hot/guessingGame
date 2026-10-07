@@ -48,7 +48,7 @@ fn main() {
     else if input.trim().to_lowercase() == "exit" {
         break;
     }else{
-        println!("Invalid input. Please enter a number between 1 and 100 or type 'exit' to quit."); 
+        println!("Invalid input. Please enter a whole number between 1 and 100 or type 'exit' to quit."); 
     }
     
     
